@@ -1,4 +1,4 @@
-package fruits;
+package lesson_1.fruits;
 
 public class FruitsApplication {
     public static void main(String[] args) {
