@@ -58,18 +58,18 @@ public class FileService {
 //    3. Написать консольное приложение, которое умеет постранично читать текстовые файлы (размером > 10 mb).
 //    Вводим страницу (за страницу можно принять 1800 символов), программа выводит ее в консоль.
 //    Контролируем время выполнения: программа не должна загружаться дольше 10 секунд, а чтение – занимать свыше 5 секунд.
-    public String readPage(File file1, int pageNum1){
+    public String readPage(File file, int pageNum){
         final int PAGE_SIZE = 1800;
         byte[] page = new byte[PAGE_SIZE];
 
-        try(RandomAccessFile randomAccessFile = new RandomAccessFile(file1, "r")){
-            randomAccessFile.seek(PAGE_SIZE * pageNum1);
+        try(RandomAccessFile randomAccessFile = new RandomAccessFile(file, "r")){
+            randomAccessFile.seek(PAGE_SIZE * pageNum);
             randomAccessFile.read(page);
             return new String(page, 0, PAGE_SIZE, StandardCharsets.UTF_8);
         } catch (IOException e){
             e.printStackTrace();
         }
-        System.out.printf("Unable to read text on page %s", pageNum1);
+        System.out.printf("Unable to read text on page %s", pageNum);
         return null;
     }
 }
